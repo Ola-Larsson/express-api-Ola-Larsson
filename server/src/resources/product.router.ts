@@ -4,10 +4,11 @@ import {
   getAllProducts,
   postProduct,
   updateProduct,
+  validateProductBody,
 } from "./product.controller";
 
 const productRouter = express.Router();
-productRouter.post("/", postProduct);
+productRouter.post("/", validateProductBody, postProduct);
 productRouter.get("/", getAllProducts);
 productRouter.put("/", updateProduct);
 productRouter.delete("/", deleteProduct);

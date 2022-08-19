@@ -4,7 +4,14 @@ GET http://localhost:3000
 
 ###POST
 POST http://localhost:3000
+Content-Type: application/json
 
+{
+  "Title": "david",
+  "Description": "Test",
+  "Amount": 5,
+  "Price": 7
+}
 
 
 ###PUT
