@@ -1,12 +1,17 @@
 import { NextFunction, Request, Response } from "express";
-import { productSchema } from "./product.model";
+import { loadDataFromFile, saveDataToFile } from "./product.datahandler";
+import { Product, products, productSchema } from "./product.model";
 
 export const getAllProducts = (req: Request, res: Response) => {
-  res.status(200).json([]);
+  res.status(200).json(loadDataFromFile);
 };
 
 export const postProduct = (req: Request, res: Response) => {
-  res.status(201).json({});
+  const product: Product = req.body;
+  product.Id = generateProductId();
+  products.push(product);
+  saveDataToFile(products);
+  res.status(201).json(product);
 };
 
 export const deleteProduct = (req: Request, res: Response) => {
@@ -27,5 +32,13 @@ export const validateProductBody = (
     res.status(400).json(result.error.message);
   } else {
     next();
+  }
+};
+
+const generateProductId = function (): number {
+  if (products.length < 1) {
+    return 1;
+  } else {
+    return products[products.length - 1].Id + 1;
   }
 };

@@ -1,7 +1,8 @@
 import Joi from "joi";
+import { loadDataFromFile } from "./product.datahandler";
 
 export interface Product {
-  Id: Number;
+  Id: number;
   Title: string;
   Description: string;
   Amount: number;
@@ -14,3 +15,5 @@ export const productSchema = Joi.object<Product>({
   Amount: Joi.number().required(),
   Price: Joi.number().required(),
 });
+
+export const products: Product[] = loadDataFromFile();
