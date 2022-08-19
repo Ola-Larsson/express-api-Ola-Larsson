@@ -19,7 +19,7 @@ PUT http://localhost:3000
 
 
 ###DELETE
-DELETE http://localhost:3000
+DELETE http://localhost:3000/1
 
 
 ###404CHECK

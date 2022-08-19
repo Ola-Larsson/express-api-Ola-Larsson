@@ -3,7 +3,7 @@ import { loadDataFromFile, saveDataToFile } from "./product.datahandler";
 import { Product, products, productSchema } from "./product.model";
 
 export const getAllProducts = (req: Request, res: Response) => {
-  res.status(200).json(loadDataFromFile);
+  res.status(200).json(loadDataFromFile());
 };
 
 export const postProduct = (req: Request, res: Response) => {
@@ -15,7 +15,13 @@ export const postProduct = (req: Request, res: Response) => {
 };
 
 export const deleteProduct = (req: Request, res: Response) => {
-  res.status(200).json(null);
+  const productId = parseInt(req.params.Id);
+  console.log(productId);
+  const filteredProducts = loadDataFromFile().filter(function (product) {
+    return product.Id != productId;
+  });
+  saveDataToFile(filteredProducts);
+  res.status(204).json(null);
 };
 
 export const updateProduct = (req: Request, res: Response) => {
