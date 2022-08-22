@@ -16,4 +16,12 @@ export const productSchema = Joi.object<Product>({
   Price: Joi.number().required(),
 });
 
+export const productSchemaWithId = Joi.object<Product, true>({
+  Id: Joi.number().required(),
+  Title: Joi.string().min(1).required(),
+  Description: Joi.string().required(),
+  Amount: Joi.number().required(),
+  Price: Joi.number().required(),
+});
+
 export const products: Product[] = loadDataFromFile();

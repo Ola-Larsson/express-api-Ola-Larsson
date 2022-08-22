@@ -1,9 +1,26 @@
 import { NextFunction, Request, Response } from "express";
 import { loadDataFromFile, saveDataToFile } from "./product.datahandler";
-import { Product, products, productSchema } from "./product.model";
+import {
+  Product,
+  products,
+  productSchema,
+  productSchemaWithId,
+} from "./product.model";
 
 export const getAllProducts = (req: Request, res: Response) => {
   res.status(200).json(loadDataFromFile());
+};
+
+export const getProduct = (req: Request, res: Response) => {
+  const productId = parseInt(req.params.Id);
+  const foundProduct = loadDataFromFile().find(
+    (product) => product.Id == productId
+  );
+  if (foundProduct) {
+    res.status(200).json(foundProduct);
+  } else {
+    res.status(404).json("Resource not found");
+  }
 };
 
 export const postProduct = (req: Request, res: Response) => {
@@ -16,7 +33,6 @@ export const postProduct = (req: Request, res: Response) => {
 
 export const deleteProduct = (req: Request, res: Response) => {
   const productId = parseInt(req.params.Id);
-  console.log(productId);
   const filteredProducts = loadDataFromFile().filter(function (product) {
     return product.Id != productId;
   });
@@ -25,15 +41,35 @@ export const deleteProduct = (req: Request, res: Response) => {
 };
 
 export const updateProduct = (req: Request, res: Response) => {
-  res.status(200).json([]);
+  const updatedProduct: Product = req.body;
+  const filteredProducts = loadDataFromFile().filter(function (product) {
+    return product.Id != updatedProduct.Id;
+  });
+  filteredProducts.push(updatedProduct);
+  filteredProducts.sort((a, b) => a.Id - b.Id);
+  saveDataToFile(filteredProducts);
+  res.status(200).json("Product updated successfully");
 };
 
-export const validateProductBody = (
+export const validateNewProductBody = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   const result = productSchema.validate(req.body);
+  if (result.error) {
+    res.status(400).json(result.error.message);
+  } else {
+    next();
+  }
+};
+
+export const validateUpdatedProductBody = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const result = productSchemaWithId.validate(req.body);
   if (result.error) {
     res.status(400).json(result.error.message);
   } else {
