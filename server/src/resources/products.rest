@@ -1,5 +1,5 @@
 ###GET 
-GET http://localhost:3000
+GET http://localhost:3000/
 
 ###GET BY ID
 GET http://localhost:3000/4
@@ -10,7 +10,7 @@ POST http://localhost:3000
 Content-Type: application/json
 
 {
-  "Title": "david",
+  "Title": "test product",
   "Description": "Test",
   "Amount": 5,
   "Price": 7
@@ -22,7 +22,7 @@ PUT http://localhost:3000
 Content-Type: application/json
 
 {
-  "Id": 3,
+  "Id": 6,
   "Title": "Product 1",
   "Description": "Test",
   "Amount": 5,

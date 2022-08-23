@@ -24,8 +24,14 @@ export const getProduct = (req: Request, res: Response) => {
 };
 
 export const postProduct = (req: Request, res: Response) => {
-  const product: Product = req.body;
-  product.Id = generateProductId();
+  const productToCreate: Product = req.body;
+  const product: Product = {
+    Id: generateProductId(),
+    Title: productToCreate.Title,
+    Description: productToCreate.Description,
+    Amount: productToCreate.Amount,
+    Price: productToCreate.Price,
+  };
   products.push(product);
   saveDataToFile(products);
   res.status(201).json(product);
@@ -36,8 +42,12 @@ export const deleteProduct = (req: Request, res: Response) => {
   const filteredProducts = loadDataFromFile().filter(function (product) {
     return product.Id != productId;
   });
-  saveDataToFile(filteredProducts);
-  res.status(204).json(null);
+  if (filteredProducts.length === loadDataFromFile().length) {
+    res.status(404).json("Resource did not exist");
+  } else {
+    res.status(204).json(null);
+    saveDataToFile(filteredProducts);
+  }
 };
 
 export const updateProduct = (req: Request, res: Response) => {
@@ -45,10 +55,14 @@ export const updateProduct = (req: Request, res: Response) => {
   const filteredProducts = loadDataFromFile().filter(function (product) {
     return product.Id != updatedProduct.Id;
   });
-  filteredProducts.push(updatedProduct);
-  filteredProducts.sort((a, b) => a.Id - b.Id);
-  saveDataToFile(filteredProducts);
-  res.status(200).json("Product updated successfully");
+  if (filteredProducts.length === loadDataFromFile().length) {
+    res.status(404).json("Resource does not exist");
+  } else {
+    filteredProducts.push(updatedProduct);
+    filteredProducts.sort((a, b) => a.Id - b.Id);
+    saveDataToFile(filteredProducts);
+    res.status(200).json("Product updated successfully");
+  }
 };
 
 export const validateNewProductBody = (
