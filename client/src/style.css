@@ -15,6 +15,12 @@
   -webkit-text-size-adjust: 100%;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -27,11 +33,46 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
 }
 
+header * {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  height: 8rem;
+  background: linear-gradient(to right, #c41a7d, #7319da);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.productDiv {
+  height: 100vh - 8rem;
+  background-color: blueviolet;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.productCard {
+  height: 5rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.productCard div {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

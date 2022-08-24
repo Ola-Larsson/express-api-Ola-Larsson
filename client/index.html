@@ -4,10 +4,23 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <script type="module" defer src="./src/main.ts"></script>
+    <title>Products</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <header>
+      <div>
+        <h1>Products</h1>
+      </div>
+      <div>
+        <button id="delBtn">Delete</button>
+      </div>
+      <div>
+        <button id="srcBtn">Search</button>
+      </div>
+    </header>
+    <div id="productDiv" class="productDiv">
+      <div></div>
+    </div>
   </body>
 </html>
