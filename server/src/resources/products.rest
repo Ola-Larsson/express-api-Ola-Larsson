@@ -6,11 +6,11 @@ GET http://localhost:3000/products/4
 
 
 ###POST
-POST http://localhost:3000
+POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-  "Title": "test product",
+  "Title": "booooo",
   "Description": "Test",
   "Amount": 5,
   "Price": 7
@@ -18,13 +18,13 @@ Content-Type: application/json
 
 
 ###PUT
-PUT http://localhost:3000
+PUT http://localhost:3000/products
 Content-Type: application/json
 
 {
-  "Id": 6,
   "Title": "Product 1",
   "Description": "Test",
+  "Id": 3,
   "Amount": 5,
   "Price": 7
 }

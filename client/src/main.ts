@@ -1,5 +1,6 @@
 import { fetchAllProducts } from "./modules/fetch.products";
 import { renderProductCards } from "./modules/productCard";
+import { renderProductForm } from "./modules/productForm";
 import { src } from "./modules/srcButton";
 import "./style.css";
 
@@ -17,5 +18,10 @@ function eventHandler() {
     allButton.addEventListener("click", async () =>
       renderProductCards(await fetchAllProducts())
     );
+  }
+
+  const createButton = document.getElementById("createBtn");
+  if (createButton) {
+    createButton.addEventListener("click", () => renderProductForm());
   }
 }

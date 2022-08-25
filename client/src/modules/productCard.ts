@@ -1,5 +1,6 @@
-import { deleteProduct, fetchAllProducts } from "./fetch.products";
+import { deleteProduct } from "./fetch.products";
 import { Product } from "./model";
+import { renderProductForm } from "./productForm";
 
 const productDiv = document.getElementById("productDiv");
 
@@ -56,6 +57,7 @@ export async function renderProductCards(products: Product[]) {
 function createEditButton(product: Product) {
   const button = document.createElement("button");
   button.innerHTML = "EDIT";
+  button.addEventListener("click", () => renderProductForm(product));
 
   return button;
 }

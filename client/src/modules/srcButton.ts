@@ -6,7 +6,10 @@ export async function src() {
   if (response) {
     const id: number = parseInt(response);
     if (id) {
-      renderProductCards(await fetchProduct(id));
+      const results = await fetchProduct(id);
+      if (results) {
+        renderProductCards(results);
+      }
     }
   }
 }
