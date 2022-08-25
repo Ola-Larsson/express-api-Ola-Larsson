@@ -1,3 +1,4 @@
+import { deleteProduct, fetchAllProducts } from "./fetch.products";
 import { Product } from "./model";
 
 const productDiv = document.getElementById("productDiv");
@@ -62,6 +63,7 @@ function createEditButton(product: Product) {
 function createDeleteButton(product: Product) {
   const button = document.createElement("button");
   button.innerHTML = "DELETE";
+  button.addEventListener("click", () => deleteProduct(product.Id));
 
   return button;
 }

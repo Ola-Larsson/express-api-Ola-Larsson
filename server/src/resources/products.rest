@@ -1,8 +1,8 @@
 ###GET 
-GET http://localhost:3000/
+GET http://localhost:3000/products
 
 ###GET BY ID
-GET http://localhost:3000/4
+GET http://localhost:3000/products/4
 
 
 ###POST
