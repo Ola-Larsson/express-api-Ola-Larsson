@@ -31,16 +31,22 @@ https://github.com/Ola-Larsson/express-api-Ola-Larsson
 
 # Starta Servern
 
-starta terminal
+## starta terminal
+
 -cd server
 -npm i
 -npm run build
 -npm start
 
+---
+
 # Starta Clienten
 
-starta terminal
+## starta terminal
+
 -cd client
 -npm i
 -npm run build
 -npm run preview
+
+---
