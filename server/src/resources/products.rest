@@ -2,7 +2,7 @@
 GET http://localhost:3000/products
 
 ###GET BY ID
-GET http://localhost:3000/products/4
+GET http://localhost:3000/products/12
 
 
 ###POST
@@ -22,15 +22,15 @@ PUT http://localhost:3000/products
 Content-Type: application/json
 
 {
+  "Id": 3,
   "Title": "Product 1",
   "Description": "Test",
-  "Id": 3,
   "Amount": 5,
   "Price": 7
 }
 
 ###DELETE
-DELETE http://localhost:3000/5
+DELETE http://localhost:3000/products/3
 
 
 ###404CHECK

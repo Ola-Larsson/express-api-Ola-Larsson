@@ -6,4 +6,7 @@ export default defineConfig({
       "/products": "http://localhost:3000",
     },
   },
+  build: {
+    target: "esnext",
+  },
 });
