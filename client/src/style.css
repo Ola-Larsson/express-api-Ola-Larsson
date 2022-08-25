@@ -71,8 +71,24 @@ header {
 .productCard div {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  width: 20%;
+}
+
+.headerTitles {
+  height: 2rem;
+  display: flex;
+  justify-content: space-evenly;
   align-content: center;
 }
+
+.headerTitles div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 20%;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
